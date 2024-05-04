@@ -1,0 +1,35 @@
+<!--inserted html block to layout.html-->
+<!--displays snakemake result-->
+<!--citation: idea from "finance" problem set-->
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 style="text-align: center;">Snakemake result</h1>
+    <!--https://documentation.bloomreach.com/engagement/docs/jinja-syntax-->
+    <!--https://python-web.teclado.com/section07/lectures/06_jinja2_conditional_statements/-->
+    <!--https://www.w3schools.com/html/html_images.asp-->
+    <!--https://stackoverflow.com/questions/59478573/how-to-display-images-from-folder-in-python-html-and-flask-->
+    <!--if snakemake_plot does not equal to "None", insert snakemake plot output--> 
+    {% if snakemake_plot != "None" %}
+        <p>Workflow of Snakemake's variant calling pipeline</p>
+        <img class="center" src="/static/{{ snakemake_plot }}">
+    {% endif %}
+    <!--if vcf does not equal to "None", allow users to download vcf output [generated from user input]-->
+    {% if snakemake_vcf != "None" %}
+        <p>Snakemake's vcf output</p>
+        <!--display .vcf content via iframe tag of html-->
+        <!--https://www.w3schools.com/html/html_iframe.asp-->
+        <iframe class="center" src="/static/{{ snakemake_vcf }}" width="500" height="400"></iframe>
+        
+        <!--https://www.w3schools.com/tags/att_a_download.asp-->
+        <!--use a tag html to enable download-->
+        <!--specify downloaded filename as string stored in {{ snakemake_vcf }}-->
+        <!--https://www.tutorialspoint.com/how-to-trigger-a-file-download-when-clicking-an-html-button-or-javascript#:~:text=Use%20the%20download%20attribute%20with,as%20a%20file%20download%20button.-->
+        <div class="form-group">
+            <a href="/static/{{ snakemake_vcf }}" download="{{ snakemake_vcf }}">
+                <!--prompt user to click download button to download file-->
+                <button type="button" class="btn btn-primary">Download VCF</button>
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}

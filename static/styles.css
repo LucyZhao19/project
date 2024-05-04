@@ -1,0 +1,31 @@
+/*I received from from cs50.ai*/
+.form-select
+{
+    width: 70%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/*center content*/
+/*https://stackoverflow.com/questions/75734651/how-to-center-a-div-in-html*/
+.form-group
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*display as a full block at the center horizontally*/
+.center
+{
+    display: block;
+    margin-right:auto;
+    margin-left:auto;
+    margin-bottom: 20px;
+}
+
+/*align text at center horizontally*/
+p
+{
+    text-align: center;
+}

@@ -1,0 +1,72 @@
+<!-- connect to layout.html body -->
+{% extends "layout.html" %}
+        
+{% block body %}
+    
+    <!--prompt user input-->
+    <div>
+        <!--https://flask.palletsprojects.com/en/3.0.x/patterns/fileuploads/-->
+        <form action="/", method="post">
+            <!--use bootstrap style from: https://getbootstrap.com/docs/4.2/components/forms/-->
+            <!--center the content displayed in div tag-->
+            <!--https://getbootstrap.com/docs/4.0/utilities/flex/-->
+            <div class="d-flex justify-content-center">
+                <!--prompt user to select fastq file-->
+                <!--use bootstrap's form-select for style: https://getbootstrap.com/docs/5.0/forms/select/-->
+                <select name="fastq" class="form-select">
+                    <!--disable blank option-->
+                    <option disabled selected value="">Select fastq file</option>
+                    <!--iteratively generate option to select A.fastq to B.fastq-->
+                    {% for letter in ['A', 'B', 'C'] %}
+                    <option value="{{ letter }}.fastq">{{ letter }}.fastq</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="d-flex justify-content-center">
+                <!--prompt user to select human reference chromosome-->
+                <!--human reference chromosomes downloaded from UCSC-->
+                <!--https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/-->
+                <select name="reference" class="form-select">
+                    <!--disable blank option-->
+                    <option disabled selected value="">Select human reference (hg38) chromosome</option>
+                    <!--iteratively generate option to select chr1 to chr22+-->
+                    {% for num in range(1, 23) %}
+                        <option value="chr{{ num }}">chr{{ num }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!--after user submits input, disable button and indicate that the content is loading-->
+            <!--https://stackoverflow.com/questions/63890936/trying-to-change-the-span-class-for-a-submit-button-to-show-bootstrap-loading-sp-->
+            <!--https://www.tutorialspoint.com/how-to-create-a-bootstrap-spinner-and-display-on-screen-till-the-data-from-the-api-loads-->
+            <!--uses boostrap spinners function: https://getbootstrap.com/docs/5.0/components/spinners/-->
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" id="loading">
+                    <!--print "Submit" on button until clicked-->
+                    <span class="btn-text">Submit</span>
+                    <!--hide spinner until user clicked the button-->
+                    <i style="display:none;" class="spinner-border spinner-border-sm"></i>
+                </button>
+            </div>
+        </form> 
+    </div>
+    <script>
+        // citation: https://stackoverflow.com/questions/63890936/trying-to-change-the-span-class-for-a-submit-button-to-show-bootstrap-loading-sp
+        // diable button after the form has been submitted
+        $("form").submit(function() {
+            // disable the button via "lodaing" id.
+            $("#loading").prop("disabled", true);
+            // show the spinner from bootstrap
+            $(".btn .spinner-border").show();
+            // print "loading" on the disabled button
+            $(".btn .btn-text").html("Content is loading...");
+        });
+        // function load() {
+        //     // disable the button via "lodaing" id.
+        //     $("#loading").prop("disabled", true);
+        //     // show the spinner from bootstrap
+        //     $(".btn .spinner-border").show();
+        //     // print "loading" on the disabled button
+        //     $(".btn .btn-text").html("Content is loading...");
+        // }
+    </script>
+{% endblock %}
