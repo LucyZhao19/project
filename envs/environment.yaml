@@ -1,0 +1,24 @@
+# define python version and channels
+# https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#integrated-package-management
+# https://stackoverflow.com/questions/55923707/specifying-python-version-within-snakemake-using-script-parameter
+
+channels:
+- conda-forge
+- bioconda
+dependencies:
+- snakemake-minimal >=8.4.4
+# specify python version
+- python
+- matplotlib
+- jinja2
+- graphviz
+# include pip to install needed projects
+- pip
+- pip:
+  - pysam
+  - pandas
+  - colorama
+  - flask
+- bcftools =1.19
+- samtools =1.19.2
+- bwa =0.7.17
