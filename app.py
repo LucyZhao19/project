@@ -63,6 +63,11 @@ def index():
                 # if the file ends with ".txt", remove the file
                 if file.endswith(".txt"):
                     os.remove("./static/" + file)
+            # delete all files in ./sorted_reads
+            outputs = os.listdir("./sorted_reads")
+            for file in outputs:
+                os.remove("./sorted_reads/" + file)
+
             # write user input into a csv file (citation: https://www.geeksforgeeks.org/writing-csv-files-in-python/)
             # save user-selected sample and reference input as a dictionary
             data = [{'sample': sample, 'reference': reference}]
@@ -85,7 +90,7 @@ def index():
                 writer.writerows(data)
             # perform variant calling pipeline using user input and snakemake.
             # force snakemake to re-run the entire pipeline
-            command = ["snakemake", "--forceall", "--cores", "1"]
+            command = ["snakemake", "--forceall", "--cores", "3"]
             # captures the outputs of all intermediate process
             subprocess.run(command, capture_output=True, text=True)
             # store name of output vcf file

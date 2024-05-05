@@ -73,5 +73,12 @@ Generate fa.fai file from all .fa files:
 
 `$ for file in *.fa; do samtools faidx $file; done`
 
+
+TODO:
+- Maybe create a return button so the user can go back to index.html?
+- finalize design.md!
+- make the video!
+
+SIDE NOTE:
 To update conda environment and remove any unnecessary packages from the environment:
 $ conda env update -p ./envs/snakemakeCS50 --file ./envs/environment.yaml --prune

@@ -1,5 +1,4 @@
 # citation: https://snakemake.readthedocs.io/en/stable/tutorial/basics.html
-
 import pandas
 
 # use pandas to refer to user input (stored in 'user_input.csv')
@@ -21,7 +20,7 @@ rule all:
 
 # reference refers to the user-selected reference chromosome (i.e. string stored in REFERNENCE)
 # sample refers to the user-selected fastq filename (i.e. string stored in SAMPLE)
-rule bwa_map:
+rule align_and_sort_reads:
     input:
         fa=expand("hg38/{reference}.fa", reference=REFERENCE),
         fastq=expand("fastq/{sample}.fastq", sample=SAMPLE)
@@ -35,7 +34,7 @@ rule bwa_map:
 
 # samtools index serves to index read for DNA mutation calling and generates a BAM.BAI output.
 # the BAM.BAI output is required for subsequent rule/step.
-rule samtools_index:
+rule index_bam:
     input:
         "sorted_reads/{sample}.bam"
     output:
@@ -44,15 +43,15 @@ rule samtools_index:
         "samtools index {input}"
 
 # generate the vcf file (which contains a list of DNA mutations) via beftools mpileup and call
-rule bcftools_call:
+rule call_mutation:
     input:
-        bam="sorted_reads/{sample}.bam",
         fa="hg38/{reference}.fa",
+        bam="sorted_reads/{sample}.bam",
         bai="sorted_reads/{sample}.bam.bai"
     output:
         "static/{sample}_{reference}.txt"
     shell:
-        "bcftools mpileup -f {input.bam} {input.fa} | "
+        "bcftools mpileup -f {input.fa} {input.bam} | "
         "bcftools call -mv - > {output}"
 
 # automatically generate snakemake report if snakefile was successfully executed
