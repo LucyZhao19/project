@@ -1,4 +1,4 @@
-# CS50_final_project_v2
+# CS50_final_project: DNA mutation identification (via Snakemake)
 Welcome! The project contains a webpage that allows users to identify DNA mutations present in a specific chromosome (excluding sex chromosomes) of a given sample. Mutations are defined as nucleotide changes in the sample that differs from the expected nucleotide in the reference chromosome.
 
 Youtube link to the final project's video: https://www.youtube.com/watch?v=_1EQCSyjra4
@@ -71,39 +71,27 @@ The user can download the VCF output and report.html by clicking on the "Downloa
 
 To return to the home page, click on the "Home" button located on the top left corner of the current webpage. 
 
-Bonus:
-snakemakeCS50 can also be ran on the command-line interface, as instructed below:
-To run snakemake, specify the desired sample and reference chromosome in "user_input.csv". Then:
+Backup plan if human reference chromosome cannot be downloaded from google drive link:
 
-`snakemake --cores=1`
+In the project folder, create a "hg38" folder:
+`cd your_path/project`
+
+`mkdir ./hg38`
+
+`cd ./hg38`
 
 The human reference chromosomes can be downloaded from:
 https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/
 
-Unzip all .fa.gz files:
+Only download the .fa.gz files with filename chr1.fa.gz, chr2.fa.gz, chr3.fa.gz, ..., chr22.fa.gz (skip the files with "GI", "KI", "chrUn", "chrX", "md5sum", and/or "chrY" in the filename)
+Move the downloaded reference chromosome files and unzip all .fa.gz files in the hg38 folder:
 
-`gunzip directory_path/*.fa.gz`
+`gunzip your_path_to_project/hg38/*.fa.gz`
 
-Index all .fa files:
-
-`cd dir_path`
+Index all .fa files in the hg38 folder:
 
 `for file in *.fa; do bwa index $file; done`
 
-Generate fa.fai file from all .fa files: 
-
-`cd dir_path`
+Generate fa.fai file from all .fa files in the hg38 folder: 
 
 `for file in *.fa; do samtools faidx $file; done`
-
-
-TODO:
-- Maybe create a return button so the user can go back to index.html?
-- finalize design.md!
-- make the Youtube video!
-- double check all requirements for the final project! https://cs50.harvard.edu/college/2024/spring/project/
-
-
-SIDE NOTE:
-To update conda environment and remove any unnecessary packages from the environment:
-conda env update -p ./envs/snakemakeCS50 --file ./envs/environment.yaml --prune
