@@ -15,7 +15,7 @@
                 <!--use bootstrap's form-select for style: https://getbootstrap.com/docs/5.0/forms/select/-->
                 <select name="fastq" class="form-select">
                     <!--disable blank option-->
-                    <option disabled selected value="">Select fastq file</option>
+                    <option disabled selected value="">Select sample</option>
                     <!--iteratively generate option to select A.fastq to B.fastq-->
                     {% for letter in ['A', 'B', 'C'] %}
                     <option value="{{ letter }}.fastq">{{ letter }}.fastq</option>

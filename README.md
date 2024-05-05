@@ -63,7 +63,7 @@ On the home page, users should click on the "Select fastq file" to choose a samp
 
 Once the content is fully loaded, the user will see the Snakemake outputs, which include a VCF output (.txt file) and a report.html embedded in the webpage. 
 - The VCF file contains a list of mutations identified in the specified chromosome of the selected sample. 
-- The "Workflow" tab displays steps of the mutation calling pipeline in sequential order. User can see the codes for each step by clicking on corresponding dot of the pipeline. The "Statics" tab displays the runtime (in seconds) of each step and the date and time of the job execution. 
+- The report.html contains details about the job execution. The "Workflow" tab displays steps of the mutation calling pipeline in sequential order. User can see the codes for each step by clicking on corresponding dot of the pipeline. The "Statistics" tab displays the runtime (in seconds) of each step and the date and time of the job execution. 
 
 The user can download the VCF output and report.html by clicking on the "Download VCF" and "Download Report" button, respectively. 
 
