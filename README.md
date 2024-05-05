@@ -19,42 +19,52 @@ $ cd your_path/CS50_final_project
 Place the downloaded folder in your "CS50_final_project" directory. 
 
 Then, unzip hg38.zip:
+
 `$ unzip hg38.zip`
 
 Check if the unzipped folder exists in the directory:
+
 `$ ls`
 
 A "hg38" folder should appear in the directory. If the unzip is successful, the user can remove hg38.zip:
-$ rm hg38.zip
+
+`$ rm hg38.zip`
 
 Create the environment "snakemakeCS50" through conda:
-$ conda init
+
+```$ conda init
 $ conda activate base
-$ conda env create -p ./envs/snakemakeCS50 --file ./envs/environment.yaml
+$ conda env create -p ./envs/snakemakeCS50 --file ./envs/environment.yaml```
 
 Activate snakemakeCS50:
-$ conda activate ./envs/snakemakeCS50
+
+`$ conda activate ./envs/snakemakeCS50`
 
 Run flask:
-$ flask run
+
+`$ flask run`
 
 To open the webpage, click on the http link (which should appear in the "*Running on ..." line after executing the flask run command)
 On the webpage, users can select any one of the samples and select a reference chromosome. Hit 
 
 snakemakeCS50 can also be ran on the command-line interface, as instructed below:
 To run snakemakeCS50, specify:
-$ snakemakeCS50 --cores=1
+
+`$ snakemakeCS50 --cores=1`
 
 The human reference chromosomes can be downloaded from:
 https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/
 
 Unzip all .fa.gz files:
-$ gunzip directory_path/*.fa.gz
+
+`$ gunzip directory_path/*.fa.gz`
 
 Index all .fa files:
-$ cd dir_path
-$ for file in *.fa; do bwa index $file; done
+
+```$ cd dir_path
+$ for file in *.fa; do bwa index $file; done```
 
 Generate fa.fai file from all .fa files: 
-$ cd dir_path
-$ for file in *.fa; do samtools faidx $file; done
+
+```$ cd dir_path
+$ for file in *.fa; do samtools faidx $file; done```
