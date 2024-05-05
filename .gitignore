@@ -2,6 +2,6 @@ envs/snakemakeCS50/
 .snakemake/
 __pycache__/
 hg38/
-sorted_reads/
 static/*.txt
 scratch2.ipynb
+bam_files/

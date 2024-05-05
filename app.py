@@ -13,17 +13,11 @@ import csv
 # application
 app = Flask(__name__)
 
-# # set folder path of users' uploaded files
-# FASTQ_FOLDER = '/workspaces/133161714/final_project/fastq'
-
 # define a list of extension for fastq files
 EXTENSIONS = ["fq", "fastq"]
 
 # define a list of possible chromosome reference (chr1 to chr22)
 REFERENCE = ["chr" + str(i) for i in range(1, 23)]
-
-# # configure path to folder containing the user uploaded files.
-# app.config["FASTQ_FOLDER"] = FASTQ_FOLDER
 
 # configure app route
 @app.route("/", methods=['GET', 'POST'])
@@ -32,9 +26,6 @@ def index():
     vcf = "None"
     report = "None"
 
-    # # set error message "error: invalid fastq and/or reference selection. Choose a valid option!"
-    # error = "error: invalid fastq and/or reference selection. Choose a valid option!"
-    
     # if the method is POST:
     if request.method == "POST":
         
@@ -79,10 +70,10 @@ def index():
                 # if the file ends with ".txt", remove the file
                 if file.endswith(".txt"):
                     os.remove("./static/" + file)
-            # delete all files in ./sorted_reads
-            outputs = os.listdir("./sorted_reads")
+            # delete all files in ./bam_files
+            outputs = os.listdir("./bam_files")
             for file in outputs:
-                os.remove("./sorted_reads/" + file)
+                os.remove("./bam_files/" + file)
 
             # write user input into a csv file (citation: https://www.geeksforgeeks.org/writing-csv-files-in-python/)
             # save user-selected sample and reference input as a dictionary
