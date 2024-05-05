@@ -25,6 +25,7 @@ Then, unzip the "hg38" folder:
 $ tar -xzf hg38.tar.gz
 
 Create the environment "snakemakeCS50" through conda:
+$ conda init
 $ conda activate base
 $ conda env create -p ./envs/snakemakeCS50 --file ./envs/environment.yaml
 
