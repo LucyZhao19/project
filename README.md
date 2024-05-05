@@ -3,7 +3,9 @@ Welcome! The project contains a webpage that allows users to identify DNA mutati
 
 Youtube link to the final project's video: https://www.youtube.com/watch?v=_1EQCSyjra4
 
-Please note that the project requires conda, which can be installed from here: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
+Note:
+- The project requires conda, which can be installed from here: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
+- In addition, the project was written with WSL (windows subsystem for linux), so the configuration may be different than Mac's.
 
 # Download project folder
 Unzip the folder submitted on Gradescope:
