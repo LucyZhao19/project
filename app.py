@@ -91,14 +91,13 @@ def index():
 
             # write to csv file
             with open(filename, 'w') as file:
-                # create a dict write object
+                # create a writer object that writes based on a dictionary
                 writer = csv.DictWriter(file, fieldnames=colnames)
-
-                #write headers
+                # write the column names (sample and reference) of the csv file
                 writer.writeheader()
-
-                #writing data rows
+                # write the corresponding data for sample and reference into the csv file
                 writer.writerows(data)
+
             # perform variant calling pipeline using user input and snakemake.
             # force snakemake to re-run the entire pipeline
             command = ["snakemake", "--forceall", "--cores", "3"]
