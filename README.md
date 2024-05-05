@@ -5,11 +5,15 @@ note: The genomic data (fastq files) of three provided samples are taken from sn
 
 Please note that the project requires conda, which can be installed from here: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
 
-
-
 Download Option 1: 
 Unzip the folder submitted on Gradescope:
+`unzip project.zip`
 
+Check if the folder has been successfully unzipped (there should be a folder name called "project" without the .zip extension):
+`ls`
+
+If the unzip was successful, remove the zipped folder:
+`rm project.zip`
 
 Download Option 2: 
 Download the following folders from this google drive link: https://drive.google.com/drive/folders/1Ca8MNlBiNXYzEubC6i33GsYCerNvKAHN?usp=drive_link
