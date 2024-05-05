@@ -1,6 +1,8 @@
 # CS50_final_project_v2
 Welcome! The project contains a webpage that allows users to identify DNA mutations present in a specific chromosome (excluding sex chromosomes) of a given sample. Mutations are defined as nucleotide changes in the sample that differs from the expected nucleotide in the reference chromosome.
 
+Youtube link to the final project's video: https://www.youtube.com/watch?v=_1EQCSyjra4
+
 note: The genomic data (fastq files) of three provided samples are taken from snakemake tutorial: https://snakemake.readthedocs.io/en/stable/tutorial/setup.html#step-3-creating-an-environment-with-the-required-software
 
 Please note that the project requires conda, which can be installed from here: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
