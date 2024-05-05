@@ -9,12 +9,15 @@ Please note that the project requires conda, which can be installed from here: h
 
 Download Option 1: 
 Unzip the folder submitted on Gradescope:
+
 `unzip project.zip`
 
 Check if the folder has been successfully unzipped (there should be a folder name called "project" without the .zip extension):
+
 `ls`
 
 If the unzip was successful, remove the zipped folder:
+
 `rm project.zip`
 
 Download Option 2: 
@@ -25,9 +28,11 @@ Note: the hg38 human reference chromosomes are downloaded from: https://hgdownlo
 
 Do the following in a command line interface (bash):
 Clone CS50_final_project git repo:
+
 `git clone https://github.com/LucyZhao19/CS50_final_project.git your_directory`
 
 Set "CS50_final_project" as the current working directory:
+
 `cd your_path/CS50_final_project`
 
 Place the downloaded folder in your "CS50_final_project" directory. 
