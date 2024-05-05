@@ -47,10 +47,19 @@ Run flask:
 `$ flask run`
 
 To open the webpage, click on the http link (which should appear in the "*Running on ..." line after executing the flask run command)
-On the webpage, users can select any one of the samples and select a reference chromosome. Hit 
+On the home page, users should click on the "Select fastq file" to choose a sample in the dropdown. The user should also click on the "Select human reference (hg38) chromosome" dropdown to select a reference chromosome. Please make sure to choose an option for provided in the sample and reference dropdown. Failure to do so will return an error message. Click "Submit" to submit selection. It may take a while for the content to load (underneath the hood, snakemake is working hard to identify mutations in the specified chromosome of the selected sample!).
 
+Once the content is fully loaded, the user will see the Snakemake outputs, which include a VCF output (.txt file) and a report.html embedded in the webpage. 
+- The VCF file contains a list of mutations identified in the specified chromosome of the selected sample. 
+- The "Workflow" tab displays steps of the mutation calling pipeline in sequential order. User can see the scripts involved in each step by clicking on corresponding dot of the pipeline. 
+
+The user can download the VCF output and report.html by clicking on the "Download VCF" and "Download Report" button, respectively. 
+
+To return to the home page, click on the "Home" button located on the top left corner of the current webpage. 
+
+Bonus:
 snakemakeCS50 can also be ran on the command-line interface, as instructed below:
-To run snakemakeCS50, specify:
+To run snakemake, specify the desired sample and reference chromosome in "user_input.csv". Then:
 
 `$ snakemake --cores=1`
 
@@ -77,7 +86,9 @@ Generate fa.fai file from all .fa files:
 TODO:
 - Maybe create a return button so the user can go back to index.html?
 - finalize design.md!
-- make the video!
+- make the Youtube video!
+- double check all requirements for the final project! https://cs50.harvard.edu/college/2024/spring/project/
+
 
 SIDE NOTE:
 To update conda environment and remove any unnecessary packages from the environment:

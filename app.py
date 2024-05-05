@@ -32,24 +32,40 @@ def index():
     vcf = "None"
     report = "None"
 
+    # # set error message "error: invalid fastq and/or reference selection. Choose a valid option!"
+    # error = "error: invalid fastq and/or reference selection. Choose a valid option!"
+    
     # if the method is POST:
     if request.method == "POST":
-        # try get user selected human reference genome
-        try: 
-            reference = request.form.get("reference")
-        # except when request.form.get gives a ValueError (then reference = None)
-        except ValueError:
-            reference = None
-        print(reference)
+        
         # try get user fastq file
         try: 
             fastq = request.form.get("fastq")
-            # split fastq file name into sample name and extension
-            sample, extension = fastq.split(".")  
-        # except when request.form.get gives a ValueError (then fastq = None)
+        # except when request.form.get gives a ValueError
         except ValueError:
-            fastq = None
-        print(fastq)
+            # display error.html
+            return render_template("error.html")
+    
+        # try split fastq file name into sample name and extension
+        try: 
+            sample, extension = fastq.split(".")  
+        # except when command gives a an AttributeError
+        except AttributeError:
+            # display error.html
+            return render_template("error.html")
+       
+        # try get user selected human reference genome
+        try: 
+            reference = request.form.get("reference")
+        # except when request.form.get gives a ValueError
+        except ValueError or None:
+            # display error.html
+            return render_template("error.html")
+        
+        # if reference is empty, display error.html
+        if reference is None:
+            return render_template("error.html")
+        
         # if file is a fastq file and if reference is in REFERENCE:
         if extension in EXTENSIONS and reference in REFERENCE:   
             # delete all previously generated snakemake output under the static folder
@@ -101,11 +117,8 @@ def index():
             # render snakemake's vcf output to result.html
             return render_template("result.html", snakemake_vcf=vcf, snakemake_report=report)
         
-        # otherwise, display "error: invalid fastq and/or reference selection. Choose a valid option!"
-        error = "error: invalid fastq and/or reference selection. Choose a valid option!"
-
-        # display error message in error.html
-        return render_template("error.html", error=error)
+        # for all other unforeseen cases, display error.html
+        return render_template("error.html")
     
     # otherwise, stay on index.html without showing any content under snakemake result
     return render_template("index.html")
