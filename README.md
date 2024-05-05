@@ -5,11 +5,7 @@ Youtube link to the final project's video: https://www.youtube.com/watch?v=_1EQC
 
 Please note that the project requires conda, which can be installed from here: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
 
-Download the following folders from this google drive link: https://drive.google.com/drive/folders/1Ca8MNlBiNXYzEubC6i33GsYCerNvKAHN?usp=drive_link
-
-The link includes a "hg38.zip" folder, which contains the human reference (hg38) chromosome data. 
-
-Download Option 1: 
+# Download project folder
 Unzip the folder submitted on Gradescope:
 
 `unzip project.zip`
@@ -22,7 +18,11 @@ If the unzip was successful, remove the zipped folder:
 
 `rm project.zip`
 
-- Alternatively, if the above method fails, the user can also find the project through git: `git clone https://github.com/LucyZhao19/project.git your_directory`
+If the above method fails, the user can also find the project through git: `git clone https://github.com/LucyZhao19/project.git your_directory`
+
+# Obtain human reference (hg38) chromosome
+Download hg38.zip from this google drive link: https://drive.google.com/drive/folders/1Ca8MNlBiNXYzEubC6i33GsYCerNvKAHN?usp=drive_link
+- The "hg38.zip" folder contains the human reference (hg38) chromosome data. 
 
 Set "project" as the current working directory:
 
@@ -58,8 +58,9 @@ Run flask:
 
 `flask run`
 
+# Navigate the webpage
 To open the webpage, click on the http link (which should appear in the "*Running on ..." line after executing the flask run command)
-On the home page, users should click on the "Select fastq file" to choose a sample in the dropdown. The user should also click on the "Select human reference (hg38) chromosome" dropdown to select a reference chromosome. Please make sure to choose an option for provided in the sample and reference dropdown. Failure to do so will return an error message. Click "Submit" to submit selection. It may take a while for the content to load (underneath the hood, snakemake is working hard to identify mutations in the specified chromosome of the selected sample!).
+On the home page, users should click on the "Select sample" to choose a sample in the dropdown. The user should also click on the "Select human reference (hg38) chromosome" dropdown to select a reference chromosome. Please make sure to choose an option for provided in the sample and reference dropdown. Failure to do so will return an error message. Click "Submit" to submit selection. It may take a while for the content to load (underneath the hood, snakemake is working hard to identify mutations in the specified chromosome of the selected sample!).
 
 Once the content is fully loaded, the user will see the Snakemake outputs, which include a VCF output (.txt file) and a report.html embedded in the webpage. 
 - The VCF file contains a list of mutations identified in the specified chromosome of the selected sample. 
@@ -73,7 +74,10 @@ Note:
 - The genomic data (fastq files) located in the /fastq folder are taken from snakemake tutorial: https://snakemake.readthedocs.io/en/stable/tutorial/setup.html#step-3-creating-an-environment-with-the-required-software
 - the hg38 human reference chromosomes located in the /hg38 folder are downloaded from: https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/. I than used samtools faidx commands to generate the .fa.fai files and used bwa index to generate the .fa.amb, .fa.ann, .fa.bwt, .fa.pac, and .fa.sa files. 
 
-Backup plan if human reference chromosome cannot be downloaded from google drive link:
+# Backup plan if human reference chromosome cannot be downloaded from google drive link
+Download the human reference (hg38) from:
+https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/
+- Only download the .fa.gz files with filename chr1.fa.gz, chr2.fa.gz, chr3.fa.gz, ..., chr22.fa.gz (skip the files with "GI", "KI", "chrUn", "chrX", "md5sum", and/or "chrY" in the filename)
 
 In the project folder, create a "hg38" folder:
 `cd your_path/project`
@@ -82,18 +86,17 @@ In the project folder, create a "hg38" folder:
 
 `cd ./hg38`
 
-The human reference chromosomes can be downloaded from:
-https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/
+Move the downloaded reference chromosome files to the project directory:
+`mv your_path/*.fa.gz your_path_to_project/hg38/`
 
-Only download the .fa.gz files with filename chr1.fa.gz, chr2.fa.gz, chr3.fa.gz, ..., chr22.fa.gz (skip the files with "GI", "KI", "chrUn", "chrX", "md5sum", and/or "chrY" in the filename)
-Move the downloaded reference chromosome files and unzip all .fa.gz files in the hg38 folder:
+Unzip all .fa.gz files in the hg38 folder:
 
 `gunzip your_path_to_project/hg38/*.fa.gz`
 
 Index all .fa files in the hg38 folder:
 
-`for file in *.fa; do bwa index $file; done`
+`for each in *.fa; do bwa index $each; done`
 
 Generate fa.fai file from all .fa files in the hg38 folder: 
 
-`for file in *.fa; do samtools faidx $file; done`
+`for each in *.fa; do samtools faidx $each; done`
