@@ -9,9 +9,9 @@ dependencies:
 - snakemake-minimal >=8.4.4
 # specify python version
 - python
-- matplotlib
+# - matplotlib
 - jinja2
-- graphviz
+# - graphviz
 # include pip to install needed projects
 - pip
 - pip:
@@ -19,6 +19,7 @@ dependencies:
   - pandas
   - colorama
   - flask
+  - pygments
 - bcftools =1.19
 - samtools =1.19.2
 - bwa =0.7.17

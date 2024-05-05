@@ -2,3 +2,5 @@ envs/snakemakeCS50/
 .snakemake/
 __pycache__/
 hg38/
+sorted_reads/
+static/*.txt

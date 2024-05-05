@@ -28,11 +28,9 @@ REFERENCE = ["chr" + str(i) for i in range(1, 23)]
 # configure app route
 @app.route("/", methods=['GET', 'POST'])
 def index():
-    # set plot and vcf to None.
-    # if POST, plot will store snakemake image output
-    # if POST, vcf will store snakemake vcf output
-    plot = "None"
+    # set vcf and report to None.
     vcf = "None"
+    report = "None"
 
     # if the method is POST:
     if request.method == "POST":
@@ -89,15 +87,14 @@ def index():
             # force snakemake to re-run the entire pipeline
             command = ["snakemake", "--forceall", "--cores", "1"]
             # captures the outputs of all intermediate process
-            # snakemake_output = subprocess.run(command, capture_output=True, text=True)
             subprocess.run(command, capture_output=True, text=True)
             # store name of output vcf file
-            expected_vcf = sample + "_" + reference + ".txt"
-            print(expected_vcf)
-
+            vcf = sample + "_" + reference + ".txt"
+            # store name of expected report
+            report = "report.html"
                 
-            # render plot to result.html
-            return render_template("result.html", snakemake_plot=plot, snakemake_vcf=expected_vcf)
+            # render snakemake's vcf output to result.html
+            return render_template("result.html", snakemake_vcf=vcf, snakemake_report=report)
         
         # otherwise, display "error: invalid fastq and/or reference selection. Choose a valid option!"
         error = "error: invalid fastq and/or reference selection. Choose a valid option!"

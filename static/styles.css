@@ -29,3 +29,9 @@ p
 {
     text-align: center;
 }
+
+/*stype for buttons*/
+button
+{
+    margin-bottom: 20px;
+}

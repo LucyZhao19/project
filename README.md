@@ -33,7 +33,9 @@ A "hg38" folder should appear in the directory. If the unzip is successful, the 
 Create the environment "snakemakeCS50" through conda:
 
 `$ conda init`
+
 `$ conda activate base`
+
 `$ conda env create -p ./envs/snakemakeCS50 --file ./envs/environment.yaml`
 
 Activate snakemakeCS50:
@@ -50,7 +52,7 @@ On the webpage, users can select any one of the samples and select a reference c
 snakemakeCS50 can also be ran on the command-line interface, as instructed below:
 To run snakemakeCS50, specify:
 
-`$ snakemakeCS50 --cores=1`
+`$ snakemake --cores=1`
 
 The human reference chromosomes can be downloaded from:
 https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/
@@ -62,9 +64,14 @@ Unzip all .fa.gz files:
 Index all .fa files:
 
 `$ cd dir_path`
+
 `$ for file in *.fa; do bwa index $file; done`
 
 Generate fa.fai file from all .fa files: 
 
 `$ cd dir_path`
+
 `$ for file in *.fa; do samtools faidx $file; done`
+
+To update conda environment and remove any unnecessary packages from the environment:
+$ conda env update -p ./envs/snakemakeCS50 --file ./envs/environment.yaml --prune
