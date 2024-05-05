@@ -70,7 +70,11 @@ def index():
                 # if the file ends with ".txt", remove the file
                 if file.endswith(".txt"):
                     os.remove("./static/" + file)
-            # delete all files in ./bam_files
+            # create ./bam_files if the folder does not exist
+            # suppress error message (exist_ok=True) that arises if the folder already exists. 
+            # https://www.geeksforgeeks.org/python-os-makedirs-method/
+            os.makedirs("./bam_files/", exist_ok=True)
+            # delete all existing files in ./bam_files
             outputs = os.listdir("./bam_files")
             for file in outputs:
                 os.remove("./bam_files/" + file)

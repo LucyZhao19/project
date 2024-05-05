@@ -4,4 +4,4 @@ __pycache__/
 hg38/
 static/*.txt
 scratch2.ipynb
-bam_files/*.bam*
+bam_files/
