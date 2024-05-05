@@ -3,5 +3,6 @@ envs/snakemakeCS50/
 __pycache__/
 hg38/
 static/*.txt
+static/*.html
 scratch2.ipynb
 bam_files/
