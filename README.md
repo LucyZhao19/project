@@ -3,9 +3,11 @@ Welcome! The project contains a webpage that allows users to identify DNA mutati
 
 Youtube link to the final project's video: https://www.youtube.com/watch?v=_1EQCSyjra4
 
-note: The genomic data (fastq files) of three provided samples are taken from snakemake tutorial: https://snakemake.readthedocs.io/en/stable/tutorial/setup.html#step-3-creating-an-environment-with-the-required-software
-
 Please note that the project requires conda, which can be installed from here: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
+
+Download the following folders from this google drive link: https://drive.google.com/drive/folders/1Ca8MNlBiNXYzEubC6i33GsYCerNvKAHN?usp=drive_link
+
+The link includes a "hg38.zip" folder, which contains the human reference (hg38) chromosome data. 
 
 Download Option 1: 
 Unzip the folder submitted on Gradescope:
@@ -20,38 +22,29 @@ If the unzip was successful, remove the zipped folder:
 
 `rm project.zip`
 
-Download Option 2: 
-Download the following folders from this google drive link: https://drive.google.com/drive/folders/1Ca8MNlBiNXYzEubC6i33GsYCerNvKAHN?usp=drive_link
+- Alternatively, if the above method fails, the user can also find the project through git: `git clone https://github.com/LucyZhao19/project.git your_directory`
 
-The link includes a "hg38.zip" folder, which contains the human reference (hg38) chromosome data. 
-Note: the hg38 human reference chromosomes are downloaded from: https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/. I than used samtools faidx commands to generate the .fa.fai files and used bwa index to generate the .fa.amb, .fa.ann, .fa.bwt, .fa.pac, and .fa.sa files. 
+Set "project" as the current working directory:
 
-Do the following in a command line interface (bash):
-Clone CS50_final_project git repo:
+`cd your_path/project`
 
-`git clone https://github.com/LucyZhao19/CS50_final_project.git your_directory`
+Move the hg38 folder into the current working directory. 
 
-Set "CS50_final_project" as the current working directory:
-
-`cd your_path/CS50_final_project`
-
-Place the downloaded folder in your "CS50_final_project" directory. 
+`mv your_path/hg38.zip .`
 
 Then, unzip hg38.zip:
 
 `unzip hg38.zip`
 
-Check if the unzipped folder exists in the directory:
+Check if the unzipped folder exists in the directory. A "hg38" folder should appear in the directory.
 
 `ls`
 
-A "hg38" folder should appear in the directory. If the unzip is successful, the user can remove hg38.zip:
+If the unzip is successful, the user can remove hg38.zip:
 
 `rm hg38.zip`
 
-Create the environment "snakemakeCS50" through conda:
-
-`conda init`
+Create the environment "snakemakeCS50" through conda (this step may take >30 min):
 
 `conda activate base`
 
@@ -75,6 +68,10 @@ Once the content is fully loaded, the user will see the Snakemake outputs, which
 The user can download the VCF output and report.html by clicking on the "Download VCF" and "Download Report" button, respectively. 
 
 To return to the home page, click on the "Home" button located on the top left corner of the current webpage. 
+
+Note:
+- The genomic data (fastq files) located in the /fastq folder are taken from snakemake tutorial: https://snakemake.readthedocs.io/en/stable/tutorial/setup.html#step-3-creating-an-environment-with-the-required-software
+- the hg38 human reference chromosomes located in the /hg38 folder are downloaded from: https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/. I than used samtools faidx commands to generate the .fa.fai files and used bwa index to generate the .fa.amb, .fa.ann, .fa.bwt, .fa.pac, and .fa.sa files. 
 
 Backup plan if human reference chromosome cannot be downloaded from google drive link:
 
