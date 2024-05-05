@@ -32,9 +32,9 @@ A "hg38" folder should appear in the directory. If the unzip is successful, the 
 
 Create the environment "snakemakeCS50" through conda:
 
-```$ conda init
+`$ conda init
 $ conda activate base
-$ conda env create -p ./envs/snakemakeCS50 --file ./envs/environment.yaml```
+$ conda env create -p ./envs/snakemakeCS50 --file ./envs/environment.yaml`
 
 Activate snakemakeCS50:
 
