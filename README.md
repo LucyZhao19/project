@@ -82,6 +82,7 @@ https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/
 - Only download the .fa.gz files with filename chr1.fa.gz, chr2.fa.gz, chr3.fa.gz, ..., chr22.fa.gz (skip the files with "GI", "KI", "chrUn", "chrX", "md5sum", and/or "chrY" in the filename)
 
 In the project folder, create a "hg38" folder:
+
 `cd your_path/project`
 
 `mkdir ./hg38`
@@ -89,6 +90,7 @@ In the project folder, create a "hg38" folder:
 `cd ./hg38`
 
 Move the downloaded reference chromosome files to the project directory:
+
 `mv your_path/*.fa.gz your_path_to_project/hg38/`
 
 Unzip all .fa.gz files in the hg38 folder:
