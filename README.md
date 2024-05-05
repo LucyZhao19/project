@@ -19,10 +19,10 @@ $ cd your_path/CS50_final_project
 Place the downloaded folder in your "CS50_final_project" directory. 
 
 Then, unzip hg38.zip:
-$ unzip hg38.zip
+$ `unzip hg38.zip`
 
 Check if the unzipped folder exists in the directory:
-$ ls
+$ `ls`
 
 A "hg38" folder should appear in the directory. If the unzip is successful, the user can remove hg38.zip:
 $ rm hg38.zip
