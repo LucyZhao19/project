@@ -1,1 +1,4 @@
 envs/snakemakeCS50/
+.snakemake/
+__pycache__/
+hg38/
