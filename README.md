@@ -32,9 +32,9 @@ A "hg38" folder should appear in the directory. If the unzip is successful, the 
 
 Create the environment "snakemakeCS50" through conda:
 
-`$ conda init
-$ conda activate base
-$ conda env create -p ./envs/snakemakeCS50 --file ./envs/environment.yaml`
+`$ conda init`
+`$ conda activate base`
+`$ conda env create -p ./envs/snakemakeCS50 --file ./envs/environment.yaml`
 
 Activate snakemakeCS50:
 
@@ -61,10 +61,10 @@ Unzip all .fa.gz files:
 
 Index all .fa files:
 
-```$ cd dir_path
-$ for file in *.fa; do bwa index $file; done```
+`$ cd dir_path`
+`$ for file in *.fa; do bwa index $file; done`
 
 Generate fa.fai file from all .fa files: 
 
-```$ cd dir_path
-$ for file in *.fa; do samtools faidx $file; done```
+`$ cd dir_path`
+`$ for file in *.fa; do samtools faidx $file; done`
