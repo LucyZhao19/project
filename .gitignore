@@ -4,5 +4,4 @@ __pycache__/
 hg38/
 static/*.txt
 static/*.html
-scratch2.ipynb
 bam_files/
